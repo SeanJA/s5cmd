@@ -83,6 +83,20 @@ def main(argv=None):
 
     scenarios = [
         Scenario(
+            name="very small files",
+            cwd=cwd,
+            dst_path=dst_path,
+            local_dir=local_dir,
+            file_size="100K",
+            file_count="10000",
+            s5cmd_args=args.s5cmd_extra_flags,
+            hyperfine_args={
+                "runs": args.runs,
+                "warmup": args.warmup,
+                "extra_flags": args.hyperfine_extra_flags,
+            },
+        ),
+        Scenario(
             name="small files",
             cwd=cwd,
             dst_path=dst_path,
